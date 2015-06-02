@@ -11,7 +11,7 @@
     <AssemblyName>SharpDx1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>7b9a2c05</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>1dc6177b</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -38,20 +38,27 @@
     <Reference Include="Emgu.CV">
       <HintPath>..\..\..\Emgu\emgucv-windows-universal-cuda 2.4.10.1940\bin\Emgu.CV.dll</HintPath>
     </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>lib\Emgu.CV.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Emgu.Util">
       <HintPath>..\..\..\Emgu\emgucv-windows-universal-cuda 2.4.10.1940\bin\Emgu.Util.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\Users\mthornalley\Downloads\sdx\Bin\DirectX11_2-Signed-net40\SharpDX.dll</HintPath>
+    <Reference Include="SharpDX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\SharpDX\SharpDX.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.D3DCompiler">
-      <HintPath>..\..\..\Users\mthornalley\Downloads\sdx\Bin\DirectX11_2-Signed-net40\SharpDX.D3DCompiler.dll</HintPath>
+    <Reference Include="SharpDX.D3DCompiler, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\SharpDX\SharpDX.D3DCompiler.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\..\..\Users\mthornalley\Downloads\sdx\Bin\DirectX11_2-Signed-net40\SharpDX.Direct3D11.dll</HintPath>
+    <Reference Include="SharpDX.Direct3D11, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\SharpDX\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\..\Users\mthornalley\Downloads\sdx\Bin\DirectX11_2-Signed-net40\SharpDX.DXGI.dll</HintPath>
+    <Reference Include="SharpDX.DXGI, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\SharpDX\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,18 +77,103 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\.xml" />
+    <None Include="lib\Assimp32.dll" />
+    <None Include="lib\Assimp64.dll" />
+    <None Include="lib\AssimpNet.dll" />
+    <None Include="lib\AssimpNet.xml" />
+    <None Include="lib\cudart64_65.dll" />
+    <None Include="lib\cvextern.dll" />
+    <None Include="lib\cvextern_test.exe" />
+    <None Include="lib\Emgu.CV.dll" />
+    <None Include="lib\Emgu.Util.dll" />
+    <None Include="lib\nppc64_65.dll" />
+    <None Include="lib\npps64_65.dll" />
+    <None Include="lib\OpenCL.dll" />
+    <None Include="lib\opencv_calib3d2410.dll" />
+    <None Include="lib\opencv_contrib2410.dll" />
+    <None Include="lib\opencv_core2410.dll" />
+    <None Include="lib\opencv_features2d2410.dll" />
+    <None Include="lib\opencv_flann2410.dll" />
+    <None Include="lib\opencv_highgui2410.dll" />
+    <None Include="lib\opencv_imgproc2410.dll" />
+    <None Include="lib\opencv_legacy2410.dll" />
+    <None Include="lib\opencv_ml2410.dll" />
+    <None Include="lib\opencv_nonfree2410.dll" />
+    <None Include="lib\opencv_objdetect2410.dll" />
+    <None Include="lib\opencv_photo2410.dll" />
+    <None Include="lib\opencv_stitching2410.dll" />
+    <None Include="lib\opencv_superres2410.dll" />
+    <None Include="lib\opencv_video2410.dll" />
+    <None Include="lib\opencv_videostab2410.dll" />
+    <None Include="lib\SharpDX.Animation.dll" />
+    <None Include="lib\SharpDX.Animation.xml" />
+    <None Include="lib\SharpDX.D3DCompiler.dll" />
+    <None Include="lib\SharpDX.D3DCompiler.xml" />
+    <None Include="lib\SharpDX.Direct2D1.dll" />
+    <None Include="lib\SharpDX.Direct2D1.xml" />
+    <None Include="lib\SharpDX.Direct3D11.dll" />
+    <None Include="lib\SharpDX.Direct3D11.Effects.dll" />
+    <None Include="lib\SharpDX.Direct3D11.Effects.xml" />
+    <None Include="lib\SharpDX.Direct3D11.xml" />
+    <None Include="lib\SharpDX.Direct3D9.dll" />
+    <None Include="lib\SharpDX.Direct3D9.xml" />
+    <None Include="lib\SharpDX.DirectComposition.dll" />
+    <None Include="lib\SharpDX.DirectComposition.xml" />
+    <None Include="lib\SharpDX.DirectManipulation.dll" />
+    <None Include="lib\SharpDX.DirectManipulation.xml" />
+    <None Include="lib\SharpDX.dll" />
+    <None Include="lib\SharpDX.DXGI.dll" />
+    <None Include="lib\SharpDX.DXGI.xml" />
+    <None Include="lib\SharpDX.MediaFoundation.dll" />
+    <None Include="lib\SharpDX.MediaFoundation.xml" />
+    <None Include="lib\SharpDX.RawInput.dll" />
+    <None Include="lib\SharpDX.RawInput.xml" />
+    <None Include="lib\SharpDX.Toolkit.Audio.dll" />
+    <None Include="lib\SharpDX.Toolkit.Audio.xml" />
+    <None Include="lib\SharpDX.Toolkit.Compiler.dll" />
+    <None Include="lib\SharpDX.Toolkit.Compiler.xml" />
+    <None Include="lib\SharpDX.Toolkit.CompilerTask.dll" />
+    <None Include="lib\SharpDX.Toolkit.CompilerTask.xml" />
+    <None Include="lib\SharpDX.Toolkit.dll" />
+    <None Include="lib\SharpDX.Toolkit.Game.dll" />
+    <None Include="lib\SharpDX.Toolkit.Game.xml" />
+    <None Include="lib\SharpDX.Toolkit.Graphics.dll" />
+    <None Include="lib\SharpDX.Toolkit.Graphics.xml" />
+    <None Include="lib\SharpDX.Toolkit.Input.dll" />
+    <None Include="lib\SharpDX.Toolkit.Input.xml" />
+    <None Include="lib\SharpDX.Toolkit.xml" />
+    <None Include="lib\SharpDX.Toolkit.Yaml.dll" />
+    <None Include="lib\SharpDX.Toolkit.Yaml.xml" />
+    <None Include="lib\SharpDX.XAudio2.dll" />
+    <None Include="lib\SharpDX.XAudio2.xml" />
+    <None Include="lib\SharpDX.XInput.dll" />
+    <None Include="lib\SharpDX.XInput.xml" />
+    <None Include="lib\SharpDX.xml" />
+    <None Include="lib\sharpdx_direct3d11_1_effects_arm.dll" />
+    <None Include="lib\sharpdx_direct3d11_1_effects_x64.dll" />
+    <None Include="lib\sharpdx_direct3d11_1_effects_x86.dll" />
+    <None Include="lib\sharpdx_direct3d11_effects_x64.dll" />
+    <None Include="lib\sharpdx_direct3d11_effects_x86.dll" />
+    <None Include="lib\tkfont.exe" />
+    <None Include="lib\tkfont.xml" />
+    <None Include="lib\tkfxc.exe" />
+    <None Include="lib\tkfxc.xml" />
+    <None Include="lib\tkmodel.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\SharpDX.2.6.3\build\SharpDX.targets" Condition="Exists('..\packages\SharpDX.2.6.3\build\SharpDX.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SharpDX.2.6.3\build\SharpDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SharpDX.2.6.3\build\SharpDX.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)lib\* $(ProjectDir)$(OutDir)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -21,6 +21,12 @@ namespace SharpDx1
 {
     class Class1
     {
+        public Image<Gray, double> LatestImage
+        {
+            get;
+            private set;
+        }
+
         public void Method()
         {
             uint numAdapter = 0; // # of graphics card adapter
@@ -131,7 +137,7 @@ namespace SharpDx1
             screenSurface.Dispose();
         }
 
-        private static void GetValue2(int width, int height, SharpDX.Direct3D11.Device device, Texture2D screenTexture, string outputFilename)
+        private void GetValue2(int width, int height, SharpDX.Direct3D11.Device device, Texture2D screenTexture, string outputFilename)
         {
             // Get the desktop capture texture
             var mapSource = device.ImmediateContext.MapSubresource(screenTexture, 0, MapMode.Read, SharpDX.Direct3D11.MapFlags.None);
@@ -163,9 +169,17 @@ namespace SharpDx1
                 //bitmap.Save(outputFilename);
 
                 using (var emguImage = new Image<Gray, byte>(bitmap))
-                using (var cannyImage = emguImage.Canny(50, 300))
+                //using (var cannyImage = emguImage.Canny(50, 300))
                 {
                     //cannyImage.Save(outputFilename);
+
+                    //var oldImage = this.LatestImage;
+
+                    this.LatestImage = emguImage.Convert<Gray, Double>();
+
+                    //if (oldImage != null)
+                    //    oldImage.Dispose();
+
                 }
             }
         }

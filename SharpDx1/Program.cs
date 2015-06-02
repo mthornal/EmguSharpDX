@@ -22,12 +22,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using System.Timers;
 using SharpDX;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using SharpDx1;
 using Device = SharpDX.Direct3D11.Device;
 using MapFlags = SharpDX.Direct3D11.MapFlags;
+using Emgu.CV.UI;
 
 namespace MiniTri
 {
@@ -40,13 +42,29 @@ namespace MiniTri
         [STAThread]
         private static void Main()
         {
+            ImageViewer viewer = new ImageViewer();
+
+            var test = new Class1();
+
             var task = Task.Run(() =>
             {
-                var test = new Class1();
                 test.Method();
             });
 
-            Console.ReadKey();
+            Timer t = new Timer(100);
+            t.Elapsed += (s, e) =>
+            {
+                if (test.LatestImage != null && viewer.Image != test.LatestImage)
+                {
+                    var oldImage = viewer.Image;
+                    viewer.Image = test.LatestImage;
+                    if (oldImage != null)
+                        oldImage.Dispose();
+                }
+            };
+            t.Enabled = true;
+
+            viewer.ShowDialog();
         }
 
         private static void OldMain()
