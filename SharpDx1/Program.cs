@@ -46,13 +46,7 @@ namespace MiniTri
 
             var test = new Class1();
 
-            var task = Task.Run(() =>
-            {
-                test.Method();
-            });
-
-            Timer t = new Timer(100);
-            t.Elapsed += (s, e) =>
+            var task = Task.Run(() => test.Method(() =>
             {
                 if (test.LatestImage != null && viewer.Image != test.LatestImage)
                 {
@@ -60,9 +54,21 @@ namespace MiniTri
                     viewer.Image = test.LatestImage;
                     if (oldImage != null)
                         oldImage.Dispose();
-                }
-            };
-            t.Enabled = true;
+                }                    
+            }));
+
+            //Timer t = new Timer(25);
+            //t.Elapsed += (s, e) =>
+            //{
+            //    if (test.LatestImage != null && viewer.Image != test.LatestImage)
+            //    {
+            //        var oldImage = viewer.Image;
+            //        viewer.Image = test.LatestImage;
+            //        if (oldImage != null)
+            //            oldImage.Dispose();
+            //    }
+            //};
+            //t.Enabled = true;
 
             viewer.ShowDialog();
         }

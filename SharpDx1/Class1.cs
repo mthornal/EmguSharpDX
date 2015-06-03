@@ -27,7 +27,7 @@ namespace SharpDx1
             private set;
         }
 
-        public void Method()
+        public void Method(Action callback)
         {
             uint numAdapter = 0; // # of graphics card adapter
             uint numOutput = 0; // # of output device (i.e. monitor)
@@ -57,13 +57,11 @@ namespace SharpDx1
             // duplicate output stuff
             Output1 output = new Output1(factory.Adapters1[numAdapter].Outputs[numOutput].NativePointer);
             OutputDuplication duplicatedOutput = output.DuplicateOutput(device);
-            Resource screenResource = null;
-            SharpDX.DataStream dataStream;
-            Surface screenSurface;
+            Resource screenResource = null;            
 
             int i = 0;
             Stopwatch sw = new Stopwatch();
-            sw.Start();
+            sw.Start();            
 
             while (true)
             {
@@ -94,8 +92,12 @@ namespace SharpDx1
                 // copy resource into memory that can be accessed by the CPU
                 device.ImmediateContext.CopyResource(screenResource.QueryInterface<Texture2D>(), screenTexture);
 
+                var rect = WindowUtility.GetWindowRect("notepad");
                 var outputFilename = string.Format("{0}.bmp", i);
-                GetValue2(width, height, device, screenTexture, outputFilename);
+                
+                GetValue2(rect, device, screenTexture, outputFilename);
+
+                callback();
 
                 screenResource.Dispose();
                 duplicatedOutput.ReleaseFrame();
@@ -137,8 +139,11 @@ namespace SharpDx1
             screenSurface.Dispose();
         }
 
-        private void GetValue2(int width, int height, SharpDX.Direct3D11.Device device, Texture2D screenTexture, string outputFilename)
+        private void GetValue2(Rect rect, SharpDX.Direct3D11.Device device, Texture2D screenTexture, string outputFilename)
         {
+            var width = rect.Right - rect.Left;
+            var height = rect.Bottom - rect.Top;
+
             // Get the desktop capture texture
             var mapSource = device.ImmediateContext.MapSubresource(screenTexture, 0, MapMode.Read, SharpDX.Direct3D11.MapFlags.None);
 
@@ -149,7 +154,7 @@ namespace SharpDx1
 
                 // Copy pixels from screen capture Texture to GDI bitmap
                 var mapDest = bitmap.LockBits(boundsRect, ImageLockMode.WriteOnly, bitmap.PixelFormat);
-                var sourcePtr = mapSource.DataPointer;
+                var sourcePtr = IntPtr.Add(mapSource.DataPointer, (mapSource.RowPitch * rect.Top) + rect.Left * 4);                
                 var destPtr = mapDest.Scan0;
                 for (int y = 0; y < height; y++)
                 {
